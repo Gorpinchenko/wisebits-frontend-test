@@ -1,8 +1,12 @@
 {
   "name": "wisebits-frontend-test",
+  "engines": {
+    "npm": ">=8.15.0",
+    "node": ">=18.7.0"
+  },
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Frontend test task for Wisebits",
+  "main": "main.ts",
   "scripts": {
     "serve": "npx webpack-dev-server --env development=true",
     "build:dev": "npm run clean && npx webpack --env development",
@@ -12,7 +16,7 @@
     "format": "npx prettier --write ./src"
   },
   "keywords": [],
-  "author": "",
+  "author": "Gorpinchenko Anton",
   "license": "ISC",
   "devDependencies": {
     "@tsconfig/svelte": "4.0.1",
@@ -25,6 +29,7 @@
     "mini-css-extract-plugin": "2.7.6",
     "normalize.css": "8.0.1",
     "prettier": "2.8.8",
+    "prettier-plugin-svelte": "2.10.1",
     "rimraf": "5.0.1",
     "svelte": "3.59.1",
     "svelte-check": "3.4.3",

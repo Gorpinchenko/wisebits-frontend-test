@@ -9,8 +9,6 @@ function getPath(...pathParts) {
 module.exports = (env) => {
   const isDev = !!(env && env.development);
 
-  console.log("isDevelopment Mode: ", isDev);
-
   return {
     entry: {
       app: getPath("src", "main.ts"),
@@ -26,16 +24,6 @@ module.exports = (env) => {
       minimize: !isDev,
       minimizer: ["...", new CssMinimizerPlugin()],
       usedExports: true,
-      splitChunks: {
-        chunks: "all",
-        name: (module, chunks, cacheGroupKey) => {
-          const allChunksNames = chunks.map((chunk) => chunk.name).join("_");
-          const prefix =
-            cacheGroupKey === "defaultVendors" ? "vendors" : cacheGroupKey;
-          return `${prefix}_${allChunksNames}`;
-        },
-      },
-      runtimeChunk: { name: "runtime" },
     },
 
     resolve: {
@@ -67,7 +55,6 @@ module.exports = (env) => {
             compilerOptions: {
               dev: isDev,
             },
-
             emitCss: true,
             hotReload: isDev,
             preprocess: require("svelte-preprocess")({}),
@@ -86,7 +73,6 @@ module.exports = (env) => {
             {
               loader: MiniCssExtractPlugin.loader,
             },
-            // "css-loader",
             {
               loader: "css-loader",
               options: {
